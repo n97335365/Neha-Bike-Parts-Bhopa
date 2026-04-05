@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neha Bike Parts</title>
+<link rel="icon" type="image/png" href="Neha logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+    body {
+   overflow-x: hidden;
+}
+    
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+.landing {
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+
+/* LANDING */
+.landing {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc') no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.landing::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    background: rgba(0,0,0,0.5);
+}
+
+.content {
+    position: relative;
+    text-align: center; 
+    color: white;
+}
+
+.content h1 {
+    font-size: 60px;
+}
+
+/* BUTTON */
+.enter-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: orange;
+    border: none;
+    cursor: pointer;
+}
+
+/* PRODUCTS */
+.products {
+    display: none;
+    padding: 20px;
+    background: #f4f4f4;
+}
+
+/* SEARCH + CALL */
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    padding: 10px;
+    width: 250px;
+}
+
+.call-btn {
+    padding: 10px 15px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CATEGORY */
+.category h3 {
+    text-align: center;
+}
+
+/* ITEMS */
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    width: 220px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+}
+
+.card button {
+    margin-top: 8px;
+    padding: 8px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ORDER FORM */
+#orderForm {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+}
+
+.form-box {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:300px;
+}
+.form-box input {
+    width:100%;
+    margin:5px 0;
+    padding:8px;
+}
+
+/* ✅ GLOBAL FIX */
+* {
+    box-sizing: border-box;
+}
+
+/* ✅ ITEMS GRID (BEST RESPONSIVE) */
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+/* ✅ CARD FIX */
+.card {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+
+/* ✅ IMAGE RESPONSIVE */
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+/* ✅ SEARCH MOBILE FIX */
+.search-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.call-btn {
+    white-space: nowrap;
+}
+
+/* ✅ LANDING TEXT RESPONSIVE */
+.content h1 {
+    font-size: 40px;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+
+    .content h1 {
+        font-size: 26px;
+    }
+
+    .content p {
+        font-size: 14px;
+    }
+
+    .enter-btn {
+        padding: 10px 18px;
+    }
+
+    .items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* 📱 SMALL MOBILE */
+@media (max-width: 400px) {
+
+    .items {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* 💻 TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .items {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* 🖥 DESKTOP */
+@media (min-width: 1025px) {
+
+    .items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+.custom-marquee {
+    width: 100%;
+    overflow: hidden;
+    background: skyblue;
+    padding: 10px 0;
+}
+
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 28px;
+    animation: scrollText 7s linear infinite;
+}
+
+/* 👇 BROWN COLOR */
+.brown {
+    color: brown;
+}
+
+/* 👇 NO GAP FIX */
+.marquee-text span {
+    margin: 0;
+    padding: 0;
+}
+
+/* ANIMATION */
+@keyframes scrollText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.custom-marquee {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #87CEEB, #00BFFF);
+    padding: 1px 0;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+}
+
+/* TEXT */
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 35px;
+    animation: scrollText 16s linear infinite;
+}
+
+/* BROWN COLOR */
+.brown {
+    color: brown;
+}
+
+/* 🔥 GLOW EFFECT */
+.glow {
+    text-shadow: 
+        0 0 5px #ffcc99,
+        0 0 10px #ff9966,
+        0 0 15px #ff6600;
+}
+
+/* ✨ NORMAL TEXT SHADOW */
+.marquee-text b {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* 🚀 ANIMATION */
+@keyframes scrollText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+    .marquee-text {
+        font-size: 18px;
+        
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LANDING -->
+<div class="landing" id="home">
+    <div class="content">
+       <h1>Neha Bike Parts</h1>
+        <p>Bhopa, Muzaffarnagar</p>
+        <button class="enter-btn" onclick="openShop()">Enter Shop</button>
+    </div>
+</div>
+
+<!-- SHOP -->
+<div id="shop" style="display:none;">
+
+    <div class="custom-marquee">
+       <div class="marquee-text">
+       <i><b><span style="color: brown;"> Neha Bike Parts </span>की <span style="color: brown;">official website </span>पर आपका हार्दिक स्वागत है...</b></i>
+    </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search parts..." onkeyup="searchItems()">
+        <button class="call-btn" onclick="callNow()">📞 Call Now</button>
+    </div>
+
+    <!-- PRODUCTS START -->
+   
+
+    <!-- ALL categories inside shop -->
+
+
+
+     <!-- Mobil Oil -->
+    <div class="category">
+        <h3>1. Mobil Oil</h3>
+        <div class="items">
+
+            
+             <div class="card">
+                <img src="castrol.jpg" onclick="showImage(this.src)">
+                <h4>Castrol Active 900ml</h4>
+                <p class="price">₹370</p>
+                <button onclick="buyNow('Castrol Active 900ml',370)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="castrol 1.webp" onclick="showImage(this.src)">
+                <h4>Castrol Active 1 ltr</h4>
+                <p class="price">₹400</p>
+                <button onclick="buyNow('Castrol Active 1 ltr',400)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="power.jpg" onclick="showImage(this.src)">
+                <h4>Castrol Power1 900 ml</h4>
+                <p class="price">₹470</p>
+                <button onclick="buyNow('Castrol Power1 900ml',470)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="power1.jpg" onclick="showImage(this.src)">
+                <h4>Castrol Power1 1 ltr</h4>
+                <p class="price">₹500</p>
+                <button onclick="buyNow('Castrol Power1 1 ltr',500)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="castrol11.avif" onclick="showImage(this.src)">
+                <h4>Castrol Active Essential 900 ml</h4>
+                <p class="price">₹300</p>
+                <button onclick="buyNow('Castrol Active Essential 900ml',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="Gulf Oil_Pride 10W-30_900ML.webp" onclick="showImage(this.src)">
+                <h4>Gulf Pride 10W-30 900ml </h4>
+                <p class="price">₹350</p>
+                <button onclick="buyNow('Gulf Pride 10W-30 900ml',350)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="Gulf.jpg" onclick="showImage(this.src)">
+                <h4>Gulf Syntrac 10W-40 1 ltr</h4>
+                <p class="price">₹500</p>
+                <button onclick="buyNow('Gulf Syntrac 10W-40 1 ltr',500)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="pensol.jpeg" onclick="showImage(this.src)">
+                <h4>Pensol 20W-40</h4>
+                <p class="price">₹380</p>
+                <button onclick="buyNow('Pensol 20W-40',380)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="servo.webp" onclick="showImage(this.src)">
+                <h4>Servo eco 4T</h4>
+                <p class="price">₹250</p>
+                <button onclick="buyNow('Servo eco 4T',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="savsol.jpg" onclick="showImage(this.src)">
+                <h4>Savsol Ester 20W-40 900 ml</h4>
+                <p class="price">₹380</p>
+                <button onclick="buyNow('Savsol Ester 20W-40 900 ml',380)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="savsol super.jpg" onclick="showImage(this.src)">
+                <h4>Savsol Super 4T 900 ml</h4>
+                <p class="price">₹250</p>
+                <button onclick="buyNow('Savsol Super 4T 900 ml',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="valkvoline.jpeg" onclick="showImage(this.src)">
+                <h4>Valvoline Champ 4T 900 ml</h4>
+                <p class="price">₹350</p>
+                <button onclick="buyNow('Valvoline Champ 4T 900 ml',350)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="arkos.jfif" onclick="showImage(this.src)">
+                <h4>Arkos Blitz 1 ltr </h4>
+                <p class="price">₹380</p>
+                <button onclick="buyNow('Arkos Blitz 1 ltr',380)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="stp.png" onclick="showImage(this.src)">
+                <h4>STP 20W-40 900 ml</h4>
+                <p class="price">₹350</p>
+                <button onclick="buyNow('STP 20W-40 900 ml',350)">Buy Now</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Visor -->
+    <div class="category">
+        <h3>2. Visor</h3>
+        <div class="items">
+
+           <div class="card">
+                <img src="spl visor.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Silver Sticker)</h4>
+                <p class="price">₹120</p>
+                <button onclick="buyNow('Spl+ visor (Silver Sticker)',120)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="spl visor.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Silver Sticker)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('Spl+ visor (Silver Sticker)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="spl visor.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Silver Sticker)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('Spl+ visor (Silver Sticker)',200)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="spl visor.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Silver Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Spl+ visor (Silver Sticker)',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="spl visor.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Silver Sticker)</h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('Spl+ visor (Silver Sticker)',300)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="blue s.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Blue Sticker)</h4>
+                <p class="price">₹120</p>
+                <button onclick="buyNow('Spl+ visor (Blue Sticker)',120)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="blue s.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Blue Sticker)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('Spl+ visor (Blue Sticker)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="blue s.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Blue Sticker)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('Spl+ visor (Blue Sticker)',200)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="blue s.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Blue Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Spl+ visor (Blue Sticker)',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="blue s.webp" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Blue Sticker)</h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('Spl+ visor (Blue Sticker)',300)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="red s.jfif" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Red Sticker)</h4>
+                <p class="price">₹120</p>
+                <button onclick="buyNow('Spl+ visor (Red Sticker)',120)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="red s.jfif" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Red Sticker)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('Spl+ visor (Red Sticker)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="red s.jfif" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Red Sticker)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('Spl+ visor (Red Sticker)',200)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="red s.jfif" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Red Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Spl+ visor (Red Sticker)',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="red s.jfif" onclick="showImage(this.src)">
+                <h4>Spl+ visor (Red Sticker)</h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('Spl+ visor (Red Sticker)',300)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Red Sticker)</h4>
+                <p class="price">₹120</p>
+                 <button onclick="buyNow('HF Deluxe visor (Red Sticker)',120)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Red Sticker)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('HF Deluxe visor (Red Sticker)',150)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Red Sticker)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('HF Deluxe visor (Red Sticker)',200)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Red Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('HF Deluxe visor (Red Sticker)',250)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Red Sticker)</h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('HF Deluxe visor (Red Sticker)',300)">Buy Now</button>
+        
+            </div>
+
+             <div class="card">
+                <img src="blue hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Blue Sticker)</h4>
+                <p class="price">₹120</p>
+                 <button onclick="buyNow('HF Deluxe visor (Blue Sticker)',120)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="blue hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Blue Sticker)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('HF Deluxe visor (Blue Sticker)',150)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="blue hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Blue Sticker)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('HF Deluxe visor (Blue Sticker)',200)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="blue hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Blue Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('HF Deluxe visor (Blue Sticker)',250)">Buy Now</button>
+            
+            </div>
+
+             <div class="card">
+                <img src="blue hf.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Blue Sticker)</h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('HF Deluxe visor (Blue Sticker)',300)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="silver.webp" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Silver Sticker)</h4>
+                <p class="price">₹120</p>
+                 <button onclick="buyNow('HF Deluxe visor (Silver Sticker)',120)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="silver.webp" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Silver Sticker)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('HF Deluxe visor (Silver Sticker)',150)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="silver.webp" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Silver Sticker)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('HF Deluxe visor (Silver Sticker)',200)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="silver.webp" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Silver Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('HF Deluxe visor (Silver Sticker)',250)">Buy Now</button>
+            
+            </div>
+
+             <div class="card">
+                <img src="silver.webp" onclick="showImage(this.src)">
+                <h4>HF Deluxe visor (Silver Sticker)</h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('HF Deluxe visor',300)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="sup spl.jfif" onclick="showImage(this.src)">
+                <h4>Super Spl visor (Silver Sticker)</h4>
+                <p class="price">₹170</p>
+                 <button onclick="buyNow('Super Spl visor (Silver Sticker)',170)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="sup spl.jfif" onclick="showImage(this.src)">
+                <h4>Super Spl visor (Silver Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Super Spl visor (Silver Sticker)',250)">Buy Now</button>
+        
+            </div>
+
+             <div class="card">
+                <img src="sup red.webp" onclick="showImage(this.src)">
+                <h4>Super Spl visor (Red Sticker)</h4>
+                <p class="price">₹170</p>
+                 <button onclick="buyNow('Super Spl visor (Red Sticker)',170)">Buy Now</button>
+        
+            </div>
+
+            <div class="card">
+                <img src="sup red.webp" onclick="showImage(this.src)">
+                <h4>Super Spl visor (Red Sticker)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Super Spl visor (Red Sticker)',250)">Buy Now</button>
+        
+            </div>
+
+             <div class="card">
+                <img src="passion.jfif" onclick="showImage(this.src)">
+                <h4>Passion+ visor</h4>
+                <p class="price">₹180</p>
+                 <button onclick="buyNow('Passion+ visor',180)">Buy Now</button>
+            
+            </div>
+
+            <div class="card">
+                <img src="passion.jfif" onclick="showImage(this.src)">
+                <h4>Passion+ visor</h4>
+                <p class="price">₹270</p>
+                 <button onclick="buyNow('Passion+ visor',270)">Buy Now</button>
+            
+            </div>
+
+             <div class="card">
+                <img src="pro.jpg" onclick="showImage(this.src)">
+                <h4>Passion Pro visor</h4>
+                <p class="price">₹180</p>
+                 <button onclick="buyNow('Passion Pro visor',180)">Buy Now</button>
+        
+            </div>
+
+             <div class="card">
+                <img src="pro.jpg" onclick="showImage(this.src)">
+                <h4>Passion Pro visor</h4>
+                <p class="price">₹270</p>
+                 <button onclick="buyNow('Passion Pro visor',270)">Buy Now</button>
+        
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Marguard -->
+    <div class="category">
+        <h3>3. Marguard</h3>
+        <div class="items">
+
+           <div class="card">
+                <img src="splm.jpg" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Black)</h4>
+                <p class="price">₹100</p>
+                <button onclick="buyNow('Spl+, HF Deluxe Marguard (Black)',100)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="splm.jpg" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Black)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('Spl+, HF Deluxe Marguard (Black)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="splm.jpg" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Black)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Spl+, HF Deluxe Marguard (Black)',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="spls.jpg" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Silver)</h4>
+                <p class="price">₹100</p>
+                <button onclick="buyNow('Spl+, HF Deluxe Marguard (Silver)',100)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="spls1.webp" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Silver)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('Spl+, HF Deluxe Marguard (Silver)',150)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="spls1.webp" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Silver)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Spl+, HF Deluxe Marguard (Silver)',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sred.webp" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Red)</h4>
+                <p class="price">₹100</p>
+                <button onclick="buyNow('Spl+, HF Deluxe Marguard (Red)',100)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sred.webp" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Red)</h4>
+                <p class="price">₹150</p>
+                <button onclick="buyNow('Spl+, HF Deluxe Marguard (Red)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sred2.webp" onclick="showImage(this.src)">
+                <h4>Spl+, HF Deluxe Marguard (Red)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Spl+, HF Deluxe Marguard (Red)',250)">Buy Now</button>
+            </div>
+
+
+            <div class="card">
+                <img src="bla.webp" onclick="showImage(this.src)">
+                <h4>Super spl Marguard (Black)</h4>
+                <p class="price">₹150</p>
+                <button onclick="buyNow('Super Spl Marguard (Black)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="bla1.webp" onclick="showImage(this.src)">
+                <h4>Super spl Marguard (Black)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Super spl Marguard (Black)',250)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="s12.jfif" onclick="showImage(this.src)">
+                <h4>Super spl Marguard (Red)</h4>
+                <p class="price">₹150</p>
+                <button onclick="buyNow('Super spl Marguard (Red)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="s11.jfif" onclick="showImage(this.src)">
+                <h4>Super spl Marguard (Red)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Super spl Marguard (Red)',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sil1.webp" onclick="showImage(this.src)">
+                <h4>Super spl Marguard (Silver)</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('Super spl Marguard (Silver)',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sil2.webp" onclick="showImage(this.src)">
+                <h4>Super spl Marguard (Silver)</h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('Super spl Marguard (Silver)',250)">Buy Now</button>
+            </div>
+
+            
+
+
+        </div>
+    </div>
+
+
+     <!-- Indigator -->
+    <div class="category">
+        <h3>4. Indigator</h3>
+        <div class="items">
+
+           <div class="card">
+                <img src="lo.jpeg" onclick="showImage(this.src)">
+                <h4>Spl+ Yellow Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                <button onclick="buyNow('Spl+ Yellow Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="loc.webp" onclick="showImage(this.src)">
+                <h4>Spl+ White Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                 <button onclick="buyNow('Spl+ White Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="or.jpg" onclick="showImage(this.src)">
+                <h4>Spl+ Yellow Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                <button onclick="buyNow('Spl+ Yellow Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="org.jpg" onclick="showImage(this.src)">
+                <h4>Spl+ White Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                 <button onclick="buyNow('Spl+ White Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="h.jpg" onclick="showImage(this.src)">
+                <h4>Spl+ yellow Indigator (Hero)</h4>
+                <p class="price">₹200</p>
+                <button onclick="buyNow('Spl+ yellow Indigator (Hero)',200)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="h1.jpeg" onclick="showImage(this.src)">
+                <h4>Spl+ White Indigator (Hero)</h4>
+                <p class="price">₹200</p>
+                 <button onclick="buyNow('Spl+ White Indigator (Hero)',200)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="hf3.jpg" onclick="showImage(this.src)">
+                <h4>HF Deluxe Yellow Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                <button onclick="buyNow('HF Deluxe Yellow Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="hf2.webp" onclick="showImage(this.src)">
+                <h4>HF Deluxe White Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                 <button onclick="buyNow('HF Deluxe White Indigator (Local)',40)">Buy Now</button>
+            </div>
+            <div class="card">
+                <img src="hf4.jfif" onclick="showImage(this.src)">
+                <h4>HF Deluxe Yellow Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                <button onclick="buyNow('HF Deluxe Yellow Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="hf1.jpeg" onclick="showImage(this.src)">
+                <h4>HF Deluxe White Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                 <button onclick="buyNow('HF Deluxe White Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="su2.webp" onclick="showImage(this.src)">
+                <h4>Super Splendor Yellow Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                <button onclick="buyNow('Super Splendor Yellow Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sup3.jfif" onclick="showImage(this.src)">
+                <h4>Super Splendor White Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                 <button onclick="buyNow('Super Splendor White Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+
+             <div class="card">
+                <img src="su1.jpg" onclick="showImage(this.src)">
+                <h4>Super Splendor Yellow Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                <button onclick="buyNow('Super Splendor Yellow Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sup3.jfif" onclick="showImage(this.src)">
+                <h4>Super Splendor White Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                 <button onclick="buyNow('Super Splendor White Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+
+             <div class="card">
+                <img src="pla.jpg" onclick="showImage(this.src)">
+                <h4>PLatina,Discover Yellow Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                <button onclick="buyNow('PLatina,Discover Yellow Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="pla2.jpeg" onclick="showImage(this.src)">
+                <h4>PLatina,Discover White Indigator (Local)</h4>
+                <p class="price">₹40</p>
+                 <button onclick="buyNow('PLatina,Discover White Indigator (Local)',40)">Buy Now</button>
+            </div>
+
+
+             <div class="card">
+                <img src="pla1.webp" onclick="showImage(this.src)">
+                <h4>PLatina,Discover Yellow Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                <button onclick="buyNow('PLatina,Discover Yellow Indigator (Original)',80)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="pla3.webp" onclick="showImage(this.src)">
+                <h4>PLatina,Discover White Indigator (Original)</h4>
+                <p class="price">₹80</p>
+                 <button onclick="buyNow('PLatina,Discover White Indigator (Original)',80)">Buy Now</button>
+            </div>
+           
+             <div class="card">
+                <img src="ktm.jpg" onclick="showImage(this.src)">
+                <h4>KTM Flexiable Indigator (Yellow) SET</h4>
+                <p class="price">₹150</p>
+                 <button onclick="buyNow('KTM Flexiable Indigator (Yellow) SET',150)">Buy Now</button>
+             </div>
+
+
+        </div>
+    </div>
+
+            <!-- Headlight -->
+    <div class="category">
+        <h3>5. Headlight</h3>
+        <div class="items">
+
+           <div class="card">
+                <img src="sple.jfif" onclick="showImage(this.src)">
+                <h4>Splendor Headlight </h4>
+                <p class="price">₹250</p>
+                <button onclick="buyNow('Splendor Headlight ',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sple.jfif" onclick="showImage(this.src)">
+                <h4>Splendor Headlight </h4>
+                <p class="price">₹300</p>
+                <button onclick="buyNow('Splendor Headlight ',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="sple.jfif" onclick="showImage(this.src)">
+                <h4>Splendor Headlight </h4>
+                <p class="price">₹350</p>
+                <button onclick="buyNow('Splendor Headlight ',350)">Buy Now</button>
+            </div>
+
+            
+             <div class="card">
+                <img src="modi.webp" onclick="showImage(this.src)">
+                <h4>Splendor Modified  Headlight </h4>
+                <p class="price">₹700</p>
+                 <button onclick="buyNow('Splendor Modified Headlight ',700)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="hf he.jpg" onclick="showImage(this.src)">
+                <h4>HF Deluxe,CD Deluxe Headlight </h4>
+                <p class="price">₹270</p>
+                <button onclick="buyNow('HF Deluxe,CD Deluxe Headlight ',270)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="hf he.jpg" onclick="showImage(this.src)">
+                <h4>HF Deluxe,CD Deluxe Headlight </h4>
+                <p class="price">₹350</p>
+                <button onclick="buyNow('HF Deluxe,CD Deluxe Headlight ',350)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="hf he.jpg" onclick="showImage(this.src)">
+                <h4>HF Deluxe,CD Deluxe Headlight </h4>
+                <p class="price">₹470</p>
+                <button onclick="buyNow('HF Deluxe,CD Deluxe Headlight ',470)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="suhe.webp" onclick="showImage(this.src)">
+                <h4>Super Splendor Headlight </h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('Super Splendor Headlight ',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="suhe.webp" onclick="showImage(this.src)">
+                <h4>Super Splendor Headlight </h4>
+                <p class="price">₹400</p>
+                 <button onclick="buyNow('Super Splendor Headlight ',400)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="suhe.webp" onclick="showImage(this.src)">
+                <h4>Super Splendor Headlight </h4>
+                <p class="price">₹500</p>
+                 <button onclick="buyNow('Super Splendor Headlight ',500)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="pahe.avif" onclick="showImage(this.src)">
+                <h4>Passion+ Headlight </h4>
+                <p class="price">₹300</p>
+                <button onclick="buyNow('Passion+ Headlight ',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="pahe.avif" onclick="showImage(this.src)">
+                <h4>Passion+ Headlight </h4>
+                <p class="price">₹400</p>
+                <button onclick="buyNow('Passion+ Headlight ',400)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="pahe.avif" onclick="showImage(this.src)">
+                <h4>Passion+ Headlight </h4>
+                <p class="price">₹500</p>
+                <button onclick="buyNow('Passion+ Headlight ',500)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="xl.jpg" onclick="showImage(this.src)">
+                <h4>XL-100 with Doom Headlight </h4>
+                <p class="price">₹250</p>
+                 <button onclick="buyNow('XL-100 with Doom Headlight ',250)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="xl.jpg" onclick="showImage(this.src)">
+                <h4>XL-100 with Doom Headlight </h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('XL-100 with Doom Headlight ',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="xls.webp" onclick="showImage(this.src)">
+                <h4>XL-Super with Doom Headlight </h4>
+                <p class="price">₹250</p>
+                <button onclick="buyNow('XL-Super with Doom Headlight ',250)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="xls.webp" onclick="showImage(this.src)">
+                <h4>XL-Super with Doom Headlight </h4>
+                <p class="price">₹300</p>
+                <button onclick="buyNow('XL-Super with Doom Headlight ',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="cd don.webp" onclick="showImage(this.src)">
+                <h4>CD Don with Doom Headlight </h4>
+                <p class="price">₹300</p>
+                 <button onclick="buyNow('CD Don with Doom Headlight ',300)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="cd don.webp" onclick="showImage(this.src)">
+                <h4>CD Don with Doom Headlight </h4>
+                <p class="price">₹400</p>
+                 <button onclick="buyNow('CD Don with Doom Headlight ',400)">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+            <!-- Battery -->
+    <div class="category">
+        <h3>6. Battery</h3>
+        <div class="items">
+
+           <div class="card">
+                <img src="4 amp.jfif" onclick="showImage(this.src)">
+                <h4>Arkos Bolt 4amp Battery</h4>
+                <p class="price">₹850</p>
+                <button onclick="buyNow('Arkos Bolt 4amp Battery',850)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="5amp.jpg" onclick="showImage(this.src)">
+                <h4>Arkos Bolt 5amp Battery</h4>
+                <p class="price">₹1100</p>
+                 <button onclick="buyNow('Arkos Bolt 5amp Battery',1100)">Buy Now</button>
+            </div>
+
+            
+
+            <div class="card">
+                <img src="long.jpg" onclick="showImage(this.src)">
+                <h4>Arkos Bolt 9amp (Long) Battery</h4>
+                <p class="price">₹1700</p>
+                 <button onclick="buyNow('Arkos Bolt 9amp (Long) Battery',1700)">Buy Now</button>
+            </div>
+
+        </div>
+    </div>
+
+         <!-- Horn -->
+    <div class="category">
+        <h3>7. Horn</h3>
+        <div class="items">
+
+           <div class="card">
+                <img src="bha.webp" onclick="showImage(this.src)">
+                <h4>Simple Horn (Bharat)</h4>
+                <p class="price">₹140</p>
+                <button onclick="buyNow('Simple Horn (Bharat)',140)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="var.webp" onclick="showImage(this.src)">
+                <h4>Simple Horn (OE)</h4>
+                <p class="price">₹200</p>
+                <button onclick="buyNow('Simple Horn (OE)',200)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="bol.jpg" onclick="showImage(this.src)">
+                <h4>Horn Bolero Small</h4>
+                <p class="price">₹400</p>
+                <button onclick="buyNow('Horn Bolero Small',400)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="bole.jpg" onclick="showImage(this.src)">
+                <h4>Horn Bolero Big</h4>
+                <p class="price">₹800</p>
+                <button onclick="buyNow('Horn Bolero Big',800)">Buy Now</button>
+            </div>
+              </div>
+    </div>
+
+            <!-- Fancy Extra Lights -->
+    <div class="category">
+        <h3>8. Fancy Extra Lights</h3>
+        <div class="items">
+
+             <div class="card">
+                <img src="6 bul.webp" onclick="showImage(this.src)">
+                <h4>6 bulb (SSLG) 1 set</h4>
+                <p class="price">₹160</p>
+                <button onclick="buyNow('6 bulb (SSLG) 1 set',160)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="9 bul.webp" onclick="showImage(this.src)">
+                <h4>9 bulb (SSLG) 1 Piece</h4>
+                <p class="price">₹130</p>
+                <button onclick="buyNow('9 bulb (SSLG) 1 Piece',130)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="12 bul.jpg" onclick="showImage(this.src)">
+                <h4>12 bulb (SSLG) 1 Piece</h4>
+                <p class="price">₹150</p>
+                <button onclick="buyNow('12 bulb (SSLG) 1 Piece',150)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="owl p.webp" onclick="showImage(this.src)">
+                <h4>Owl Light (Plastic Body)</h4>
+                <p class="price">₹250</p>
+                <button onclick="buyNow('Owl Light (Plastic Body)',250)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="matt.jfif" onclick="showImage(this.src)">
+                <h4>Owl Light (Mattel Body)</h4>
+                <p class="price">₹350</p>
+                <button onclick="buyNow('Owl Light (Mattel Body)',350)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="handle.jfif" onclick="showImage(this.src)">
+                <h4>handle Light</h4>
+                <p class="price">₹180</p>
+                <button onclick="buyNow('Handle Light',180)">Buy Now</button>
+            </div>
+
+              </div>
+    </div>
+
+             <!-- Plug -->
+    <div class="category">
+        <h3>9. Plug </h3>
+        <div class="items">
+
+            <div class="card">
+                <img src="small.webp" onclick="showImage(this.src)">
+                <h4>Bosch Small Chudi Plug</h4>
+                <p class="price">₹80</p>
+                <button onclick="buyNow('Bosch Small Chudi Plug',80)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="big.webp" onclick="showImage(this.src)">
+                <h4>Bosch Big Chudi  Plug</h4>
+                <p class="price">₹90</p>
+                <button onclick="buyNow('Bosch Big Chudi  Plug',90)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="locall.webp" onclick="showImage(this.src)">
+                <h4>Small Chudi Local Plug</h4>
+                <p class="price">₹50</p>
+                <button onclick="buyNow('Small Chudi Local Plug',50)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="big.webp" onclick="showImage(this.src)">
+                <h4>XL-100 Plug Bosch</h4>
+                <p class="price">₹90</p>
+                <button onclick="buyNow('XL-100 Plug Bosch',90)">Buy Now</button>
+            </div>
+
+           
+        </div>
+    </div>
+
+    <!-- Headlight Bulb -->
+    <div class="category">
+        <h3>10. Headlightbulb </h3>
+        <div class="items">
+
+            <div class="card">
+                <img src="bulb.webp" onclick="showImage(this.src)">
+                <h4>Headlight Bulb Local</h4>
+                <p class="price">₹50</p>
+                <button onclick="buyNow('Headlight Bulb Local',50)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="Headlight bulbn.webp" onclick="showImage(this.src)">
+                <h4>Headlight Bulb Local</h4>
+                <p class="price">₹60</p>
+                <button onclick="buyNow('Headlight Bulb Local',60)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="minda.jpg" onclick="showImage(this.src)">
+                <h4>Headlight Bulb Minda</h4>
+                <p class="price">₹90</p>
+                <button onclick="buyNow('Headlight Bulb Minda',90)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="fan 4d.webp" onclick="showImage(this.src)">
+                <h4>Headlight Bulb 4d with fan</h4>
+                <p class="price">₹249</p>
+                <button onclick="buyNow('Headlight Bulb 4d with fan',249)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="orrr.jpg" onclick="showImage(this.src)">
+                <h4>Headlight Bulb (DAZ)</h4>
+                <p class="price">₹420</p>
+                <button onclick="buyNow('Headlight Bulb (DAZ)',420)">Buy Now</button>
+            </div>
+
+             <div class="card">
+                <img src="dhz.jfif" onclick="showImage(this.src)">
+                <h4>Headlight Bulb (DHZ)</h4>
+                <p class="price">₹499</p>
+                <button onclick="buyNow('Headlight Bulb (DHZ)',499)">Buy Now</button>
+            </div>
+
+            <div class="card">
+                <img src="eeee.jfif" onclick="showImage(this.src)">
+                <h4>Headlight Bulb (HZZ)</h4>
+                <p class="price">₹699</p>
+                <button onclick="buyNow('Headlight Bulb (HZZ)',699)">Buy Now</button>
+            </div>
+
+           
+        </div>
+    </div>
+
+
+</div>
+
+<!-- ORDER FORM -->
+<div id="orderForm">
+    <div class="form-box">
+        <h3>Order Details</h3>
+
+        <input type="text" id="custName" placeholder="Your Name">
+        <input type="text" id="custPhone" placeholder="Phone Number">
+        <input type="text" id="custAddress" placeholder="Address">
+        <input type="number" id="custQty" placeholder="Quantity">
+        <input type="text" id="custPincode" placeholder="Pincode" onkeyup="getLocation()">
+        <input type="text" id="custDistrict" placeholder="District" readonly>
+        <input type="text" id="custState" placeholder="State" readonly>
+
+        <select id="paymentMethod" style="width:100%; padding:8px; margin-top:5px;">
+    <option value="">Select Payment Method</option>
+    <option value="upi">UPI (Online Payment)</option>
+    <option value="cod">Cash on Delivery</option>
+</select>
+
+        <button onclick="submitOrder()" style="background:green;color:white;width:100%;padding:10px;">Submit</button>
+        <button onclick="closeForm()" style="width:100%;margin-top:5px;">Cancel</button>
+    </div>
+</div>
+
+
+
+
+  
+
+<script>
+function openShop() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("shop").style.display = "block";
+}
+
+function callNow() {
+    window.location.href = "tel:XXXXXXXXXX"; // apna number dal
+}
+
+function showImage(src) {
+    window.open(src, "_blank");
+}
+
+function buyNow(name, price) {
+    alert("Order: " + name + "\nPrice: ₹" + price);
+}
+
+function searchItems() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+
+
+function openShop() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("shop").style.display = "block";
+}
+
+
+
+let selectedPrice = 0;
+let selectedProduct = "";
+
+// ✅ OPEN SHOP
+function openShop() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("shop").style.display = "block";
+}
+
+// ✅ SEARCH
+function searchItems() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        let text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+
+// ✅ CALL BUTTON
+function callNow() {
+    window.location.href = "tel:916396318993";
+}
+
+// ✅ BUY NOW
+function buyNow(name, price) {
+    selectedProduct = name;   // 👈 ye missing tha
+    selectedPrice = price;    // 👈 ye bhi missing tha
+
+    document.getElementById("orderForm").style.display = "flex";
+}
+
+// ✅ CLOSE FORM
+function closeForm() {
+    document.getElementById("orderForm").style.display = "none";
+}
+
+// ✅ SUBMIT ORDER
+function submitOrder() {
+    let name = document.getElementById("custName").value;
+    let phoneUser = document.getElementById("custPhone").value;
+    let pincode = document.getElementById("custPincode").value;
+    let district = document.getElementById("custDistrict").value;
+    let state = document.getElementById("custState").value;
+    let address = document.getElementById("custAddress").value;
+    let qty = document.getElementById("custQty").value;
+    let paymentMethod = document.getElementById("paymentMethod").value;
+
+    if (!name || !phoneUser || !address || !qty || !pincode || !district || !state || !paymentMethod) {
+        alert("Please fill all details including payment method.");
+        return;
+    }
+
+    window.customerData = {
+        name, phoneUser, address, qty, pincode, district, state, paymentMethod
+    };
+
+    let total = selectedPrice * qty;
+
+    // 🔥 PAYMENT LOGIC
+    if (paymentMethod === "upi") {
+        showQR(total);   // 👉 UPI QR show
+    } else {
+        paymentDone();   // 👉 COD direct order
+    }
+
+    closeForm();
+}
+// ✅ QR FUNCTION
+function showQR(total) {
+
+    let upiID = "krishanpalsingh71444@oksbi"; // 👈 apni UPI ID daal
+
+    let upiLink = "upi://pay?pa=" + upiID + "&pn=Neha Bike Parts&am=" + total + "&cu=INR";
+
+    let qrURL = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(upiLink);
+
+    document.getElementById("qrImage").src = qrURL;
+    document.getElementById("payAmount").innerText = "Amount: ₹" + total;
+
+    document.getElementById("paymentQR").style.display = "flex";
+}
+
+// ✅ CLOSE QR
+function closeQR() {
+    document.getElementById("paymentQR").style.display = "none";
+}
+
+function paymentDone() {
+
+    let admin = "916396318993";
+
+    let data = window.customerData;
+
+    let total = selectedPrice * data.qty;
+
+    let now = new Date();
+let orderTime = now.toLocaleString(); // Date + Time
+
+    // ✅ ADMIN MESSAGE (FULL DETAILS)
+   let msgAdmin = "🛒 New Order:\n\n"
+    + "🕒 Order Time: " + orderTime + "\n\n"
+    + "Product: " + selectedProduct + "\n"
+    + "Price: ₹" + selectedPrice + "\n"
+    + "Quantity: " + data.qty + "\n\n"
+    + "Total: ₹" + total + "\n\n"
+    + "Payment Method: " + data.paymentMethod + "\n\n"
+    + "Name: " + data.name + "\n"
+    + "Phone: " + data.phoneUser + "\n"
+    + "Address: " + data.address + "\n"
+    + "Pincode: " + data.pincode + "\n"
+    + "District: " + data.district + "\n"
+    + "State: " + data.state;
+
+        let msgCustomer = "✅ Your Order Confirmed!\n\n"
+    + "Product: " + selectedProduct + "\n"
+    + "Total: ₹" + total + "\n\n"
+    + "Thank you for shopping with Neha Bike Parts 🙏";
+
+    // ✅ CUSTOMER MESSAGE
+    
+
+    // 🔥 ADMIN WHATSAPP
+    window.open("https://wa.me/" + admin + "?text=" + encodeURIComponent(msgAdmin), "_blank");
+
+    // 🔥 CUSTOMER WHATSAPP
+    window.open("https://wa.me/91" + data.phoneUser + "?text=" + encodeURIComponent(msgCustomer), "_blank");
+
+    
+    closeQR();
+showSuccessPage();
+}
+function showImage(src) {
+    document.getElementById("popupImg").src = src;
+    document.getElementById("imagePopup").style.display = "flex";
+}
+
+function closeImage() {
+    document.getElementById("imagePopup").style.display = "none";
+}
+
+function payNowUPI() {
+
+    let upiID = "krishanpalsingh71444@oksbi"; // same UPI
+    let total = document.getElementById("payAmount").innerText.replace("Amount: ₹","");
+
+    let upiLink = "upi://pay?pa=" + upiID + "&pn=Neha Bike Parts&am=" + total + "&cu=INR";
+
+    // 👉 Direct open UPI app
+    window.location.href = upiLink;
+}
+
+function getLocation() {
+
+    let pincode = document.getElementById("custPincode").value;
+
+    // 6 digit check
+    if (pincode.length === 6) {
+
+        fetch("https://api.postalpincode.in/pincode/" + pincode)
+        .then(res => res.json())
+        .then(data => {
+
+            if (data[0].Status === "Success") {
+
+                let postOffice = data[0].PostOffice[0];
+
+                document.getElementById("custDistrict").value = postOffice.District;
+                document.getElementById("custState").value = postOffice.State;
+
+            } else {
+                alert("Invalid Pincode ❌");
+            }
+
+        })
+        .catch(() => {
+            alert("Network Error ❌");
+        });
+    }
+}
+
+function confirmPayment() {
+    paymentDone();
+}
+
+function showSuccessPage() {
+    document.getElementById("orderSuccess").style.display = "flex";
+}
+
+function goHome() {
+    document.getElementById("orderSuccess").style.display = "none";
+}
+
+</script>
+
+<!-- PAYMENT QR -->
+<div id="paymentQR" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;">
+
+    <div style="background:white; padding:20px; border-radius:10px; text-align:center;">
+        <h3>Scan & Pay</h3>
+
+        <img id="qrImage" src="" width="200"><br><br>
+
+        <p id="payAmount"></p>
+
+        <button onclick="payNowUPI()" 
+style="margin-top:10px; padding:10px; background:green; color:white; border:none; border-radius:5px; cursor:pointer;">
+    Pay Now
+</button>
+
+<br><br>
+
+<button onclick="confirmPayment()" 
+style="margin-top:10px; padding:10px; background:blue; color:white; border:none; border-radius:5px; cursor:pointer;">
+    ✅ I Have Paid
+</button>
+
+<br><br>
+
+        <button onclick="closeQR()" style="padding:8px;">Close</button>
+    </div>
+
+</div>
+
+<div id="imagePopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:999;">
+    
+    <span onclick="closeImage()" style="position:absolute; top:20px; right:30px; font-size:30px; color:white; cursor:pointer;">✖</span>
+    
+    <img id="popupImg" style="max-width:90%; max-height:90%; border-radius:10px;">
+</div>
+
+<!-- ORDER CONFIRMATION PAGE -->
+<div id="orderSuccess" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#0f172a;
+color:white;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+z-index:9999;
+">
+
+    <h1 style="font-size:40px;">✅ Order Confirmed</h1>
+    <p style="font-size:18px; margin-top:10px;">
+        Thank you for your order! <br>
+       Your Order is Confirmed Sucessfully. 🎉
+    </p>
+
+    <button onclick="goHome()" style="
+    margin-top:20px;
+    padding:12px 20px;
+    background:orange;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;">
+        Back to Shop
+    </button>
+
+</div>
+
+</body>
+</html>
